@@ -1,7 +1,7 @@
 FROM jetty:alpine
 
 ENV JETTY_WEBAPPS ${JETTY_BASE}/webapps
-ENV DIGILIB_VERSION_URL https://github.com/robcast/digilib/releases/download/release-2.5.5/digilib-webapp-2.5.5-srv3.war
+ENV DIGILIB_VERSION_URL https://github.com/robcast/digilib/releases/download/release-2.5.6/digilib-webapp-2.5.6-srv3.war
 ENV MAX_IMAGE_SIZE ${MAX_IMAGE_SIZE:-0}
 ENV DEFAULT_QUALITY ${DEFAULT_QUALITY:-2}
 ENV IIIF_PREFIX ${IIIF_PREFIX:-IIIF}
