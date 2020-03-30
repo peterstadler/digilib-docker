@@ -15,7 +15,7 @@ EOF
         VALUE=${f2}
         
         # replace existing default values in digilib-config.xml
-        sed -i -e "/name=\"$KEY\"/ s/value=\".*\"/value=\"$VALUE\"/" ${JETTY_WEBAPPS}/ROOT/WEB-INF/digilib-config.xml
+        sed -i -e "/name=\"$KEY\"/ s#value=\"[^\"]*\"#value=\"$VALUE\"#" ${JETTY_WEBAPPS}/ROOT/WEB-INF/digilib-config.xml
         
         # add new entries to digilib-config.xml
         if ! grep $KEY -q ${JETTY_WEBAPPS}/ROOT/WEB-INF/digilib-config.xml
