@@ -1,10 +1,15 @@
 FROM jetty:alpine
 
+ARG DIGILIB_VERSION_URL="https://github.com/robcast/digilib/releases/download/release-2.9.0/digilib-webapp-2.9.0.war"
+
 ENV JETTY_WEBAPPS ${JETTY_BASE}/webapps
-ENV DIGILIB_VERSION_URL https://github.com/robcast/digilib/releases/download/release-2.9.0/digilib-webapp-2.9.0.war
-ENV MAX_IMAGE_SIZE ${MAX_IMAGE_SIZE:-0}
-ENV DEFAULT_QUALITY ${DEFAULT_QUALITY:-2}
-ENV IIIF_PREFIX ${IIIF_PREFIX:-IIIF}
+
+# add default IIIF options  
+ENV DIGILIB_IIIF_API_VERSION="2.1"
+ENV DIGILIB_IIIF_INFO_CORS="true"
+ENV DIGILIB_IIIF_IMAGE_CORS="true"
+ENV DIGILIB_IIIF_PREFIX="IIIF"
+ENV DIGILIB_IIIF_SLASH_REPLACEMENT="!"
 
 ADD ${DIGILIB_VERSION_URL} tmp.war
 ADD entrypoint.sh .
@@ -12,7 +17,8 @@ ADD entrypoint.sh .
 USER root:root
 RUN mkdir ${JETTY_WEBAPPS}/ROOT \
     && mkdir -p /var/lib/digilib/images \
-    && unzip -q tmp.war -d ${JETTY_WEBAPPS}/ROOT/ \ 
+    && unzip -q tmp.war -d ${JETTY_WEBAPPS}/ROOT/ \
+    && cp ${JETTY_WEBAPPS}/ROOT/WEB-INF/digilib-config.xml.template ${JETTY_WEBAPPS}/ROOT/WEB-INF/digilib-config.xml \ 
     && rm tmp.war \
     && chmod 755 entrypoint.sh \
     && chown -R jetty:jetty ${JETTY_WEBAPPS}/ROOT
