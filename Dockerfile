@@ -4,6 +4,9 @@ ARG DIGILIB_VERSION_URL="https://github.com/robcast/digilib/releases/download/re
 
 ENV JETTY_WEBAPPS ${JETTY_BASE}/webapps
 
+# set default location for images inside the Docker container
+ENV DIGILIB_BASEDIR_LIST="/var/lib/digilib/images"
+
 # add default IIIF options  
 ENV DIGILIB_IIIF_API_VERSION="2.1"
 ENV DIGILIB_IIIF_INFO_CORS="true"
