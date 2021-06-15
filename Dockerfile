@@ -1,6 +1,6 @@
 FROM jetty:alpine
 
-ARG DIGILIB_VERSION_URL="https://github.com/robcast/digilib/releases/download/release-2.10.0/digilib-webapp-2.10.0.war"
+ARG DIGILIB_VERSION_URL="https://github.com/robcast/digilib/releases/download/release-2.11.0/digilib-webapp-2.11.0.war"
 
 ENV JETTY_WEBAPPS ${JETTY_BASE}/webapps
 
