@@ -1,4 +1,4 @@
-FROM jetty:alpine
+FROM jetty:9-jre11-eclipse-temurin
 
 ARG DIGILIB_VERSION_URL="https://github.com/robcast/digilib/releases/download/release-2.12.1/digilib-webapp-2.12.1.war"
 
@@ -18,6 +18,11 @@ ADD ${DIGILIB_VERSION_URL} tmp.war
 ADD entrypoint.sh .
 
 USER root:root
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y --no-install-recommends unzip && \
+    rm -rf /var/lib/apt/lists/*
+
 RUN mkdir ${JETTY_WEBAPPS}/ROOT \
     && mkdir -p /var/lib/digilib/images \
     && unzip -q tmp.war -d ${JETTY_WEBAPPS}/ROOT/ \
