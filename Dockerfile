@@ -1,6 +1,6 @@
 FROM jetty:9-jre11-eclipse-temurin
 
-ARG DIGILIB_VERSION_URL="https://github.com/robcast/digilib/releases/download/release-2.12.1/digilib-webapp-2.12.1.war"
+ARG DIGILIB_VERSION_URL="https://github.com/robcast/digilib/releases/download/release-2.12.2/digilib-webapp-2.12.2.war"
 
 ENV JETTY_WEBAPPS ${JETTY_BASE}/webapps
 
