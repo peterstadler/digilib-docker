@@ -40,4 +40,3 @@ VOLUME ["/var/lib/digilib/images"]
 EXPOSE 8080
 
 ENTRYPOINT ["./entrypoint.sh"]
-CMD ["java","-jar","/usr/local/jetty/start.jar"]
