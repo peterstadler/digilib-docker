@@ -26,4 +26,4 @@ EOF
 done
 
 # run the command given in the Dockerfile at CMD 
-exec /docker-entrypoint.sh
+exec /docker-entrypoint.sh "${@}"

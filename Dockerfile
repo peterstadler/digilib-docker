@@ -1,8 +1,8 @@
 FROM jetty:9-jre11-eclipse-temurin
 
-ARG DIGILIB_VERSION_URL="https://github.com/robcast/digilib/releases/download/release-2.12.1/digilib-webapp-2.12.1.war"
+ARG DIGILIB_VERSION_URL="https://github.com/robcast/digilib/releases/download/release-2.12.3/digilib-webapp-2.12.3.war"
 
-ENV JETTY_WEBAPPS ${JETTY_BASE}/webapps
+ENV JETTY_WEBAPPS=${JETTY_BASE}/webapps
 
 # set default location for images inside the Docker container
 ENV DIGILIB_BASEDIR_LIST="/var/lib/digilib/images"
@@ -40,4 +40,3 @@ VOLUME ["/var/lib/digilib/images"]
 EXPOSE 8080
 
 ENTRYPOINT ["./entrypoint.sh"]
-CMD ["java","-jar","/usr/local/jetty/start.jar"]
