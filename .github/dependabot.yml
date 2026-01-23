@@ -7,3 +7,10 @@ updates:
       interval: 'weekly'
     labels:
       - 'dependencies'
+  
+  - package-ecosystem: 'docker'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+    labels:
+      - 'dependencies'
