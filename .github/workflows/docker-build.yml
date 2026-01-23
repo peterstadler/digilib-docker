@@ -6,6 +6,8 @@ on:
     - cron: '31 01 * * 5'
   # run on every push to any branch
   push:
+    branches-ignore: 
+      - dependabot/*
   workflow_dispatch:
 
 
