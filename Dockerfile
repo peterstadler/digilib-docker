@@ -23,7 +23,7 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends unzip && \
     rm -rf /var/lib/apt/lists/*
 
-RUN mkdir ${JETTY_WEBAPPS}/ROOT \
+RUN mkdir -p ${JETTY_WEBAPPS}/ROOT \
     && mkdir -p /var/lib/digilib/images \
     && unzip -q tmp.war -d ${JETTY_WEBAPPS}/ROOT/ \
     && cp ${JETTY_WEBAPPS}/ROOT/WEB-INF/digilib-config.xml.template ${JETTY_WEBAPPS}/ROOT/WEB-INF/digilib-config.xml \ 
@@ -34,6 +34,8 @@ RUN mkdir ${JETTY_WEBAPPS}/ROOT \
 #ADD jetty.xml $JETTY_BASE/etc/jetty.xml
 
 USER jetty:jetty
+# enables webapp deployment for Jetty12 from the `$JETTY_BASE/webapps`
+RUN java -jar $JETTY_HOME/start.jar --add-modules=ee8-deploy,ee8-jsp
 
 VOLUME ["/var/lib/digilib/images"]
 
