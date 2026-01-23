@@ -1,4 +1,4 @@
-FROM jetty:10-jre21-eclipse-temurin
+FROM jetty:12-jre21-eclipse-temurin
 
 ARG DIGILIB_VERSION_URL="https://github.com/robcast/digilib/releases/download/release-2.13.0/digilib-webapp-2.13.0.war"
 
