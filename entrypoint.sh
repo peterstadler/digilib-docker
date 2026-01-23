@@ -25,5 +25,10 @@ EOF
     fi
 done
 
+# Jetty has introduced a URI Compliance configuration (since 10.0.3+) which, for example,
+# forbids having encoded ! characters (encoded as %2F) in URL paths.
+# However Digilib uses these and thus we need to set Jetty into LEGACY mode.
+echo "jetty.httpConfig.uriCompliance=LEGACY" >> ${JETTY_BASE}/start.d/server.ini
+
 # run the command given in the Dockerfile at CMD 
 exec /docker-entrypoint.sh "${@}"
